@@ -18,16 +18,7 @@
       </option>
     </select>
 
-    <!-- Catégories -->
-    <div>
-      <h3 class="text-lg font-bold text-blue-600">Catégories</h3>
-      <div v-for="(cat, index) in form.categories" :key="index" class="flex gap-2 mb-2">
-        <input v-model="cat.libelle" type="text" placeholder="Libellé" class="input flex-1" required />
-        <input v-model.number="cat.prix" type="number" placeholder="Prix (€)" class="input w-32" required />
-        <button type="button" @click="removeCategory(index)" class="btn-danger">✕</button>
-      </div>
-      <button type="button" @click="addCategory" class="btn-secondary">+ Ajouter une catégorie</button>
-    </div>
+    
 
     <!-- Créer -->
     <button type="submit" class="btn-primary">Créer le concert</button>
@@ -44,7 +35,6 @@ export default {
         lieu: '',
         date: '',
         organisateurId: '',
-        categories: []
       },
       organisateurs: []
     }
@@ -57,9 +47,7 @@ export default {
     addCategory() {
       this.form.categories.push({ libelle: '', prix: 0 });
     },
-    removeCategory(index) {
-      this.form.categories.splice(index, 1);
-    },
+    
     async createConcert() {
       try {
         const res = await fetch('/concerts', {

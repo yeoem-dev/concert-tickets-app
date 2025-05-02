@@ -17,11 +17,13 @@
     </div>
 
     <ul>
-      <li v-for="utilisateur in utilisateurs" :key="utilisateur.id" class="mb-2 p-2 bg-white rounded shadow">
-        <p class="font-semibold">{{ utilisateur.nom }}</p>
-        <p class="text-sm text-gray-600">{{ utilisateur.email }}</p>
-      </li>
-    </ul>
+  <li v-for="user in utilisateurs" :key="user.id">
+    <router-link :to="`/${currentType}/${user.id}/details`">
+      {{ user.nom }} - {{ user.email }}
+    </router-link>
+  </li>
+</ul>
+
   </div>
 </template>
 
