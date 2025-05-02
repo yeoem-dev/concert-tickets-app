@@ -9,6 +9,7 @@
           <li><router-link to="/concerts" class="hover:underline">Concerts</router-link></li>
           <li><router-link to="/billets" class="hover:underline">Billets</router-link></li>
           <li><router-link to="/utilisateurs" class="hover:underline">Utilisateurs</router-link></li>
+          <li><router-link to="/categories" class="hover:underline">Catégories</router-link></li>
         </ul>
       </nav>
     </header>

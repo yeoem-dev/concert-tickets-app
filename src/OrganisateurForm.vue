@@ -16,15 +16,28 @@
     },
     methods: {
       async submitForm() {
-        await fetch('/organisateurs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nom: this.nom, email: this.email })
-        })
-        this.$emit('created')
-        this.nom = ''
-        this.email = ''
-      }
+  try {
+    const response = await fetch('/organisateurs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nom: this.nom, email: this.email })
+    });
+
+    if (!response.ok) {
+      console.error('Erreur lors de la création:', response.statusText);
+      return;
+    }
+
+    this.$emit('created');
+    this.nom = '';
+    this.email = '';
+  } catch (error) {
+    console.error('Erreur réseau:', error);
+  }
+}
+
     }
   }
   </script>
